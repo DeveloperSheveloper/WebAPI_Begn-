@@ -10,6 +10,7 @@ namespace LoginAPI.Controllers
     {
         public ActionResult Login()
         {
+
              return View();
         }
     }

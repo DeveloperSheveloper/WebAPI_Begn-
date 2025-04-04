@@ -1,0 +1,29 @@
+﻿body {
+    background-color: #f8f9fa;
+}
+
+.login-container {
+    max-width: 900px;
+    margin: 50px auto;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-form {
+    padding: 50px;
+}
+
+.login-image {
+    background: url('your-image-url.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.btn-google {
+    background: white;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

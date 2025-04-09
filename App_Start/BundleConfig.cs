@@ -28,6 +28,9 @@ namespace LoginAPI
 
             bundles.Add(new StyleBundle("~/Content/custom").Include(
                      "~/Content/custom/login.css"));
+
+            bundles.Add(new ScriptBundle("~/Script/local").Include(
+                "~/Scripts/local/login.js"));
         }
     }
 }

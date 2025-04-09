@@ -6,7 +6,7 @@ using System.Web;
 
 namespace LoginAPI.Models
 {
-    public class Login
+    public class LoginModel
     {
         public int Id { get; set; }     
         public string loginType { get; set; }     

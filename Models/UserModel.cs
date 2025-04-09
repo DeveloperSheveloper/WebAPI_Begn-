@@ -5,7 +5,7 @@ using System.Web;
 
 namespace LoginAPI.Models
 {
-    public class User
+    public class UserModel
     {
         public int Id { get; set; }
         public string loginType { get; set; }

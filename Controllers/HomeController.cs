@@ -18,7 +18,7 @@ namespace LoginAPI.Controllers
 
         public async Task<ActionResult> UserAuthentication(LoginModel model)
         {
-
+            
             return View();
         }
     }

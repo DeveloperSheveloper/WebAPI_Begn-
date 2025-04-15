@@ -45,27 +45,32 @@
         <p class="text-muted">New User ?! Please fill-in your details.</p>
         <form id="registrationForm">
             <div class="mb-3">
-                <label class="form-label">Email</label>
-                <input type="email" id="regUsername" name="username" class="form-control" placeholder="Enter your email">
+                <label class="form-label">Username</label>
+                <input type="text" id="regUsername" name="username" class="form-control" placeholder="enter your username">
+                <small id="lblRegUsernameError"></small>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Contact No</label>
-                <input type="email" id="regUsername" name="username" class="form-control" placeholder="Enter your email">
+                <input type="text" id="regMobileNo" name="MobileNo" class="form-control" placeholder="enter your contact number">
+                <small id="lblRegContactError"></small>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Email </label>
-                <input type="email" id="regUsername" name="username" class="form-control" placeholder="Enter your email">
+                <input type="email" id="regEmailID" name="username" class="form-control" placeholder="enter your email">
+                <small id="lblRegEmailError"></small>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Password</label>
-                <input type="password" id="regPassword" name="password" class="form-control" placeholder="********">
+                <input type="password" id="regPassword" name="password" class="form-control" placeholder="create your password">
+                <small id="lblRegPasswordError"></small>
             </div>
             <div class="mb-3">
                 <label class="form-label">Confirm Password</label>
-                <input type="password" id="regPassword" name="password" class="form-control" placeholder="********">
+                <input type="password" id="regCPassword" name="confirmpassword" class="form-control" placeholder="confirm your created password">
+                <small id="lblRegCPasswordError"></small>
             </div>
             @*<div class="d-flex justify-content-between mb-3">
             <div>

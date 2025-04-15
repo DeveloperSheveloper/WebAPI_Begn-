@@ -16,4 +16,9 @@ namespace LoginAPI.Models
         public string lastPassword { get; set; }     
         public string isActive { get; set; }     
     }
+
+    public class RegistrationModel:LoginModel
+    {
+        public string MobileNo { get; set; }
+    }
 }

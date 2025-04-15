@@ -108,4 +108,10 @@ $("#btnSignUp").on("click", function () {
         $('#regCPassword').css('border-color', '');
         $('#lblRegCPasswordError').html("");
     }
+
+
+    $.ajax({
+        url:''
+    });
+
 });

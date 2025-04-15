@@ -16,10 +16,17 @@ namespace LoginAPI.Controllers
              return View();
         }
 
-        public async Task<ActionResult> UserAuthentication(LoginModel model)
+        public async Task<ActionResult> UserAuthentication(LoginModel lmodel)
         {
             
             return View();
+        }
+
+        public async Task<JsonResult> UserRegistration(RegistrationModel rmodel)
+        {
+            var result = new JsonResult() ;
+
+            return result;
         }
     }
 }

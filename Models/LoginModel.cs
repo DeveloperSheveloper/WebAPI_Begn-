@@ -15,10 +15,12 @@ namespace LoginAPI.Models
         public string password { get; set; }     
         public string lastPassword { get; set; }     
         public string isActive { get; set; }     
+        public string Qflag { get; set; }     
     }
 
     public class RegistrationModel:LoginModel
     {
         public string MobileNo { get; set; }
+
     }
 }

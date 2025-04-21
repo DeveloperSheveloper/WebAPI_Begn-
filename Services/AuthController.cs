@@ -20,7 +20,7 @@ namespace LoginAPI.Services
         public async Task<HttpResponseMessage> apiGetResponse(string apiUrlString, object parameters = null)
         {
             var client = new HttpClient();
-            client.BaseAddress = new Uri(apiUrlString);
+            client.BaseAddress = new Uri(BaseApiUrl);
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -39,13 +39,14 @@ namespace LoginAPI.Services
             HttpResponseMessage responseMsg = new HttpResponseMessage();
 
             var client = new HttpClient();
-            client.BaseAddress = new Uri(apiUrlString);
+            client.BaseAddress = new Uri(BaseApiUrl);
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             if (parameters != null)
             {
                 string Json=JsonConvert.SerializeObject(parameters);
+                System.Diagnostics.Debug.WriteLine("Request JSON: " + Json);
                 var paramToJson=new StringContent(Json,System.Text.Encoding.UTF8,"application/json");
                 responseMsg = await client.PostAsync(apiUrlString, paramToJson);
             }
@@ -54,6 +55,8 @@ namespace LoginAPI.Services
                 var jsonErr = new StringContent(string.Empty, System.Text.Encoding.UTF8, "application/json");
                 responseMsg = await client.PostAsync(apiUrlString, jsonErr);
             }
+            string responseText = await responseMsg.Content.ReadAsStringAsync();
+            System.Diagnostics.Debug.WriteLine("Response Text: " + responseText); // See the real error
             client.Dispose();
             return responseMsg;
         }

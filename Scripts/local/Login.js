@@ -47,12 +47,13 @@ $("#btnSignUp").on("click", function () {
     var regCPassword = $('#regCPassword').val();
 
     //Validations
-
+    var validation = true;
     // : username
     if (regUsername === '') {
         $('#regUsername').css('border-color', '#AF3F3F');
         $('#lblRegUsernameError').css('color', '#AF3F3F');
         $('#lblRegUsernameError').html("&nbsp;Username can not be empty");
+        validation = false;
     }
     else {
         $('#regUsername').css('border-color', '');
@@ -63,11 +64,13 @@ $("#btnSignUp").on("click", function () {
         $('#regMobileNo').css('border-color', '#AF3F3F');
         $('#lblRegContactError').css('color', '#AF3F3F');
         $('#lblRegContactError').html("&nbsp;Contact No can not be empty");
+        validation = false;
     }
-    else if (regMobileNo.length() > 10 && regMobileNo < 10) {
+    else if (regMobileNo.length!== 10 || isNaN(regMobileNo)) {
         $('#regMobileNo').css('border-color', '#AF3F3F');
         $('#lblRegContactError').css('color', '#AF3F3F');
         $('#lblRegContactError').html("&nbsp;Enter a vaild contact number");
+        validation = false;
     }
     else {
         $('#regMobileNo').css('border-color', '');
@@ -78,6 +81,7 @@ $("#btnSignUp").on("click", function () {
         $('#regEmailID').css('border-color', '#AF3F3F');
         $('#lblRegEmailError').css('color', '#AF3F3F');
         $('#lblRegEmailError').html("&nbsp;Username can not be empty");
+        validation = false;
     }
     else {
         $('#regEmailID').css('border-color', '');
@@ -88,6 +92,7 @@ $("#btnSignUp").on("click", function () {
         $('#regPassword').css('border-color', '#AF3F3F');
         $('#lblRegPasswordError').css('color', '#AF3F3F');
         $('#lblRegPasswordError').html("&nbsp;Password can not be empty");
+        validation = false;
     }
     else {
         $('#regPassword').css('border-color', '');
@@ -98,20 +103,40 @@ $("#btnSignUp").on("click", function () {
         $('#regCPassword').css('border-color', '#AF3F3F');
         $('#lblRegCPasswordError').css('color', '#AF3F3F');
         $('#lblRegCPasswordError').html("&nbsp;Confirm your password");
+        validation = false;
     }
     else if (regCPassword !== regPassword) {
-        $('#regMobileNo').css('border-color', '#AF3F3F');
-        $('#lblRegContactError').css('color', '#AF3F3F');
-        $('#lblRegContactError').html("&nbsp; Password does not match");
+        $('#regCPassword').css('border-color', '#AF3F3F');
+        $('#lblRegCPasswordError').css('color', '#AF3F3F');
+        $('#lblRegCPasswordError').html("&nbsp; Password does not match");
+        validation = false;
     }
     else {
         $('#regCPassword').css('border-color', '');
         $('#lblRegCPasswordError').html("");
     }
 
+    if (!validation) return;
 
     $.ajax({
-        url:''
+        url: 'Home/UserRegistration',
+        type: 'POST',
+        data: JSON.stringify({ username: regUsername, MobileNo: regMobileNo, emailId: regEmailID, password: regPassword }),
+        contentType: 'application/json',
+        success: function (response) {
+            var response = JSON.parse(response);
+            try {
+                if (response.success) {
+                    console.log("Success");
+                }
+            }
+            catch (e) {
+                throw e;
+            }
+        },
+        error: function (xhr, status, error) {
+            console.log("Ajax Error : ",error);
+        }
     });
 
 });
